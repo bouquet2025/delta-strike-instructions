@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Инструкция: как начать игру Delta Strike</title>
+<style>
+  :root {
+    --accent: #2874fc;
+    --bg: #f5f6fa;
+    --card-bg: #ffffff;
+    --text: #1f2430;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+  header.page-header {
+    background: linear-gradient(135deg, #020381, #2874fc);
+    color: #fff;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  header.page-header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+  }
+  header.page-header p {
+    margin: 0;
+    opacity: 0.9;
+  }
+  nav.toc {
+    max-width: 900px;
+    margin: -28px auto 32px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 20px 28px;
+  }
+  nav.toc h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--accent);
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  nav.toc a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  nav.toc a:hover { color: var(--accent); }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+  section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+  }
+  section h2 {
+    color: var(--accent);
+    border-bottom: 2px solid #eef1ff;
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  section h3 {
+    margin-top: 28px;
+    color: #1f2430;
+  }
+  .note {
+    background: #fff7e6;
+    border-left: 4px solid #fcb900;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 16px 0;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+    align-items: flex-start;
+  }
+  .step-number {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  .step-content { flex: 1; }
+  .media-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .media-row figure {
+    margin: 0;
+    text-align: center;
+    flex: 1 1 220px;
+    max-width: 320px;
+  }
+  .media-row img, .media-row video {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+  }
+  figcaption {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
+    border-radius: 8px;
+  }
+  .mode-card {
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin: 18px 0;
+  }
+  .mode-card h3 { margin-top: 0; }
+  .mode-charge { background: #eef1f5; }
+  .mode-sleep { background: linear-gradient(180deg, rgba(171,183,194,0.35), rgba(155,167,217,0.35)); }
+  .mode-pregame { background: #e9ecfb; }
+  .mode-ingame { background: linear-gradient(180deg, rgba(155,167,217,0.35), rgba(171,183,194,0.25)); }
+  .mode-postgame { background: #eef1f5; }
+  ul { padding-left: 22px; }
+  .credentials {
+    background: #eef6ff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: inline-block;
+  }
+  .back-to-top {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .level-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 6px;
+  }
+  .level-beginner { background: #22a55e; }
+  .level-intermediate { background: #f59e0b; }
+  .level-expert { background: #dc2626; }
+  .level-special { background: #7c3aed; }
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 16px 0 28px;
+  }
+  .game-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: #fafbff;
+  }
+  .game-card h4 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+  }
+  .game-meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .game-card p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header" id="top">
+  <h1>Инструкция: как начать игру Delta Strike</h1>
+  <p>Пошаговое руководство и описание всех режимов фазера</p>
+</header>
+
+<nav class="toc">
+  <h2>Содержание</h2>
+  <ol>
+    <li><a href="#prep">Подготовка перед игрой</a></li>
+    <li><a href="#remote">Запуск игры с пульта дистанционного управления</a></li>
+    <li><a href="#player-settings">Дополнительные настройки игрока</a></li>
+    <li><a href="#phaser-modes">Режимы фазера — описание индикаторов</a></li>
+    <li><a href="#game-types">Режимы игры (типы игр)</a></li>
+    <li><a href="#game-service">Использование веб-портала игрового сервера (game service)</a></li>
+  </ol>
+</nav>
+
+<main>
+
+  <section id="prep">
+    <h2>1. Подготовка перед игрой</h2>
+    <p>Перед тем как начать игру, помогите всем игрокам надеть фазеры (жилеты) и попросите их <strong>нажать на курок</strong> — это активирует фазер.</p>
+    <p>Если в зале темно, на пульте дистанционного управления есть <strong>фонарик</strong> — включается нажатием на логотип Delta Strike.</p>
+
+    <div class="media-row">
+      <figure>
+        <img src="./remote_steps_files/image-6.png" alt="Активация фазера перед игрой">
+        <figcaption>Помогите игрокам надеть фазер и нажать на курок</figcaption>
+      </figure>
+    </div>
+
+    <div class="note">
+      <strong>Рекомендация:</strong> для запуска и остановки игр используйте пульт дистанционного управления Delta Strike. Веб-портал игрового сервера (game service) используйте только если пульт недоступен — см. раздел 5.
+    </div>
+  </section>
+
+  <section id="remote">
+    <h2>2. Запуск игры с пульта дистанционного управления — пошагово</h2>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <p>Чтобы начать игру, нажмите кнопку <strong>«New Game»</strong>.</p>
+        <div class="media-row">
+          <figure>
+            <img src="./remote_steps_files/first-screen-621x1024.png" alt="Начальный экран">
+            <figcaption>Начальный экран</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <p>Выберите тип игры, в которую хотите сыграть, и нажмите <strong>«Next»</strong>. При создании игры команды распределяются случайным образом.</p>
+        <div class="media-row">
+          <figure>
+            <img src="./remote_steps_files/game-select-713x1024.png" alt="Выбор игры">
+            <figcaption>Выбор игры</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <p>На экране подтверждения вы можете назначить игроков в конкретные команды:</p>
+        <ul>
+          <li>направьте пульт на жилет игрока;</li>
+          <li>нажмите кнопку <strong>R</strong> (красный), <strong>G</strong> (зелёный) или <strong>B</strong> (синий) — в зависимости от нужного цвета команды;</li>
+          <li>для дополнительных вариантов цветов нажмите <strong>«More Player Options»</strong> → <strong>«All Team Colors»</strong>.</li>
+        </ul>
+        <div class="media-row">
+          <figure>
+            <img src="./remote_steps_files/game-verify-screen-630x1024.png" alt="Подтверждение начала игры">
+            <figcaption>Подтверждение начала игры</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <p>Чтобы изменить цвет жилета:</p>
+        <ul>
+          <li>направьте пульт на нужный жилет и нажмите кнопку нужного цвета;</li>
+          <li>чтобы изменить цвет нескольких жилетов сразу, удерживайте кнопку цвета и «проведите» инфракрасным лучом пульта по нескольким фазерам.</li>
+        </ul>
+        <div class="media-row">
+          <figure>
+            <img src="./remote_steps_files/red-player-997x1024.png" alt="Красная команда">
+            <figcaption>Красная команда</figcaption>
+          </figure>
+          <figure>
+            <img src="./remote_steps_files/green-player-871x1024.png" alt="Зелёная команда">
+            <figcaption>Зелёная команда</figcaption>
+          </figure>
+          <figure>
+            <img src="./remote_steps_files/Blue-player-793x1024.png" alt="Синяя команда">
+            <figcaption>Синяя команда</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <p>Когда цвета команд выбраны и игроки готовы, нажмите <strong>«Start Game»</strong> — игра начнётся после короткого обратного отсчёта.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">6</div>
+      <div class="step-content">
+        <p>После завершения игры нажмите <strong>«Sleep Phasers»</strong>, чтобы перевести все фазеры в спящий режим. Это предотвращает случайные сбои, например самопроизвольный запуск игры.</p>
+        <div class="media-row">
+          <figure>
+            <img src="./remote_steps_files/first-screen-621x1024.png" alt="Кнопка Sleep Phasers на пульте">
+            <figcaption>Кнопка «Sleep Phasers» на главном экране пульта</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <h3>Видео: запуск игры через игровой менеджер</h3>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/f-zCUYAaNWE" title="Уголок Delta Strike Ops: Менеджер игры - Начало игры" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <a class="back-to-top" href="#top">↑ Наверх</a>
+  </section>
+
+  <section id="player-settings">
+    <h2>3. Дополнительные настройки игрока (через «More Player Options»)</h2>
+    <p>На пульте дистанционного управления есть кнопка <strong>«More Player Options»</strong> (доступна также на последнем экране перед началом игры). В этом меню есть следующие кнопки:</p>
+    <ul>
+      <li><strong>«All Team Colors»</strong> — открывает расширенный экран выбора цвета. Чтобы назначить цвет, направьте пульт на жилет и нажмите нужную кнопку цвета.</li>
+      <li><strong>«Single Hand Mode»</strong> — режим стрельбы одной рукой: фазер не будет требовать обязательного хвата второй рукой для выстрела. Полезно для юных игроков и игроков с ограниченными возможностями, а также в любых других случаях, когда это нужно.</li>
+      <li><strong>«Friendly Fire Mode»</strong> — включает и выключает огонь по игрокам своей команды («дружественный огонь»).</li>
+    </ul>
+    <p>Чтобы команда друзей или родителей с детьми попала в одну команду — назначьте им одинаковый цвет вручную (см. шаг 4 выше).</p>
+
+    <div class="media-row">
+      <figure>
+        <img src="./player_settings_files/image-1.png" alt="Редактирование игрока — рисунок 1">
+        <figcaption>Рисунок 1: меню редактирования игрока</figcaption>
+      </figure>
+      <figure>
+        <img src="./player_settings_files/Colour-select-649x1024.png" alt="Все цвета команды — рисунок 2">
+        <figcaption>Рисунок 2: расширенный выбор цвета команды</figcaption>
+      </figure>
+      <figure>
+        <img src="./player_settings_files/image-7.png" alt="Наведение пульта на жилет">
+        <figcaption>Наведение пульта на жилет для смены цвета</figcaption>
+      </figure>
+    </div>
+
+    <a class="back-to-top" href="#top">↑ Наверх</a>
+  </section>
+
+  <section id="phaser-modes">
+    <h2>4. Режимы фазера — описание индикаторов</h2>
+    <p>Индикаторы на жилете и экран фазера всегда показывают, в каком режиме находится фазер. Смотреть на экран не обязательно — по подсветке жилета можно понять текущий режим.</p>
+
+    <div class="mode-card mode-charge">
+      <h3>Режим зарядки</h3>
+      <p>Во время проводной или беспроводной зарядки на жилете отображается световой узор зарядки. Чем больше горит лампочек, тем больше заряд батареи. При низком заряде подсветка горит только на нижних уровнях. Уровень заряда также отображается на экране фазера.</p>
+      <div class="media-row">
+        <figure>
+          <img src="./phaser_modes_files/100charge3-1.gif" alt="Полная зарядка">
+          <figcaption>Зарядка (полностью заряженная батарея)</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/lowcharge2.gif" alt="Низкий заряд">
+          <figcaption>Зарядка (низкий заряд батареи)</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/charge.png" alt="Экран фазера при зарядке">
+          <figcaption>Экран фазера показывает уровень заряда</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/wake-screen.png" alt="Экран пробуждения">
+          <figcaption>После извлечения из зарядки — экран «нажмите на курок»</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mode-card mode-sleep">
+      <h3>Спящий режим</h3>
+      <p>Если фазер не заряжается и простаивает 5 минут, он автоматически переходит в спящий режим — все индикаторы и экран гаснут.</p>
+      <ul>
+        <li>Чтобы вывести фазер из спящего режима — нажмите на курок.</li>
+        <li>Чтобы перевести все фазеры в спящий режим после игры — всегда нажимайте кнопку <strong>«Sleep Phasers»</strong>.</li>
+        <li>Если фазер без подсветки не реагирует на курок — вероятно, села батарея, нужно поставить на зарядку.</li>
+      </ul>
+      <div class="media-row">
+        <figure>
+          <img src="./phaser_modes_files/sleepmode.png" alt="Спящий режим">
+          <figcaption>Экран фазера в спящем режиме</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mode-card mode-pregame">
+      <h3>Предматчевый режим (режим пробуждения)</h3>
+      <p>После извлечения из зарядки или перезагрузки через игровой менеджер фазер переходит в предматчевый режим:</p>
+      <ul>
+        <li>жилет медленно меняет цвета — это означает, что игрок ещё не нажал на курок;</li>
+        <li>игроку нужно нажать на курок, чтобы фазер «понял» свою готовность к игре;</li>
+        <li>после нажатия курка подсветка загорается белым и плавно переключается между ярким и тусклым светом;</li>
+        <li>если игроку ещё не назначена команда — экран и подсветка остаются белыми;</li>
+        <li>после назначения команды жилет начинает медленно мигать цветом команды этого игрока — это удобный момент, чтобы при необходимости поменять цвет команды игрока.</li>
+      </ul>
+      <p>Когда игра начинается, через динамики арены и фазеры звучит объявление <strong>«Игра началась»</strong>.</p>
+      <div class="media-row">
+        <figure>
+          <img src="./phaser_modes_files/wakemode.gif" alt="Команда не назначена">
+          <figcaption>Команда не назначена, спусковой механизм ещё не активирован</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/VID_20230412_142252.gif" alt="Готовность игрока">
+          <figcaption>Белый цвет на жилете — игрок нажал на курок и готов к игре</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/noteamscreen.png" alt="Команда не назначена (экран)">
+          <figcaption>Команда не назначена (белый экран)</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/blueteamscreen.png" alt="Назначена синяя команда">
+          <figcaption>Назначена синяя команда</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/pregame.gif" alt="Назначена красная команда">
+          <figcaption>Жилет медленно мигает цветом команды (красная)</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mode-card mode-ingame">
+      <h3>Игровой режим</h3>
+      <ul>
+        <li>В начале игры на экране фазера появляется короткий обратный отсчёт.</li>
+        <li>Подсветка жилета начинает быстро двигаться и ярко светиться — это привлекает внимание других игроков.</li>
+        <li>На экране фазера во время игры отображается: щит, текущее оружие, команда игрока, а также бонусы или специальные сообщения, относящиеся к конкретной игре.</li>
+      </ul>
+      <div class="media-row">
+        <figure>
+          <img src="./phaser_modes_files/countdownsmall.png" alt="Обратный отсчёт">
+          <figcaption>Обратный отсчёт перед началом игры</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/ingame-2.gif" alt="Световые сигналы во время игры">
+          <figcaption>Световые сигналы быстро меняются во время игры</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/blueingame.png" alt="Экран фазера в игре">
+          <figcaption>Экран фазера во время игры (щит, оружие, команда)</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="mode-card mode-postgame">
+      <h3>Режим послеигрового обновления</h3>
+      <ul>
+        <li>По окончании игры подсветка жилета и экран начинают медленно двигаться.</li>
+        <li>На экране фазера появляется сообщение, указывающее игроку вернуться в комнату для переодевания.</li>
+      </ul>
+      <div class="media-row">
+        <figure>
+          <img src="./phaser_modes_files/postgame-1.gif" alt="Послеигровой режим">
+          <figcaption>Огни медленно двигаются после окончания игры</figcaption>
+        </figure>
+        <figure>
+          <img src="./phaser_modes_files/VID_20230412_142252_1.gif" alt="Сообщение в конце игры">
+          <figcaption>Сообщение на экране фазера в конце игры</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <a class="back-to-top" href="#top">↑ Наверх</a>
+  </section>
+
+  <section id="game-types">
+    <h2>5. Режимы игры (типы игр)</h2>
+    <p>На экране <strong>«Game Select»</strong> доступно множество типов игр. Ниже — краткое описание выбранных режимов, со сложностью, составом команд и защитой (Shield).</p>
+
+    <div class="game-grid">
+      <div class="game-card">
+        <h4>Delta One Shot (One Shot)</h4>
+        <div class="game-meta"><span class="level-badge level-beginner">Начальный</span><br>Команды: Red vs Blue · Shield: 30 (1 удар)</div>
+        <p>Классический лазертаг без щита — игра идёт быстрее. Элементы арены такие же, как в Delta Tag. Побеждает команда с большим количеством очков.</p>
+      </div>
+      <div class="game-card">
+        <h4>One Shot Free for All</h4>
+        <div class="game-meta"><span class="level-badge level-beginner">Начальный</span><br>Без команд (Red) · Shield: 30 (1 удар)</div>
+        <p>То же самое, что Delta One Shot, но без щита и без команд — каждый сам за себя.</p>
+      </div>
+      <div class="game-card">
+        <h4>Delta Tag</h4>
+        <div class="game-meta"><span class="level-badge level-beginner">Начальный</span><br>Команды: Red vs Blue · Shield: 100 (3 удара)</div>
+        <p>Стандартный режим с двумя видами оружия и полным щитом. Элементы арены работают в обычном режиме.</p>
+      </div>
+      <div class="game-card">
+        <h4>Delta Tag — 4 Teams</h4>
+        <div class="game-meta"><span class="level-badge level-beginner">Начальный</span><br>Команды: Red vs Blue vs Green vs Gold · Shield: 100 (3 удара)</div>
+        <p>Тот же Delta Tag, но игроки делятся на четыре команды.</p>
+      </div>
+      <div class="game-card">
+        <h4>Agents</h4>
+        <div class="game-meta"><span class="level-badge level-intermediate">Средний</span><br>Без команд, 2 цвета: Red vs Blue · Shield: 100 (3 удара)</div>
+        <p>Один из самых популярных специальных режимов. Все игроки начинают синими; вскоре часть игроков случайно становится красными и получает 50 очков за каждые 5 секунд в этом статусе. Синий может «украсть» красный статус, пометив красного игрока.</p>
+      </div>
+      <div class="game-card">
+        <h4>Delta Respawn</h4>
+        <div class="game-meta"><span class="level-badge level-intermediate">Средний</span><br>Команды: Red vs Blue · Shield: 100 (3–4 удара)</div>
+        <p>Классика Delta Strike. Метка соперника приносит очки команде; после получения метки игрок должен вернуться к базовой станции своей команды и постоять перед ней 2–3 секунды для возрождения. Побеждает команда с наибольшим количеством очков.</p>
+      </div>
+      <div class="game-card">
+        <h4>Sharpshooter</h4>
+        <div class="game-meta"><span class="level-badge level-expert">Эксперт</span><br>Команды: Green vs Blue · Shield: 100 (2 удара)</div>
+        <p>Игра на меткость с винтовкой XR Energy. Метка в плечевой датчик стоит 200 очков — в 4 раза больше, чем в грудь или спину. Винтовка отключает соперника всего за 2 попадания.</p>
+      </div>
+      <div class="game-card">
+        <h4>Backstabber</h4>
+        <div class="game-meta"><span class="level-badge level-expert">Эксперт</span><br>Команды: Red vs Blue · Shield: 100 (3 удара)</div>
+        <p>Очки за метки зависят от того, куда попали: метка в спину — 200 очков, в плечи — 60, в грудь — 50. Важно прикрывать спину!</p>
+      </div>
+      <div class="game-card">
+        <h4>Territories</h4>
+        <div class="game-meta"><span class="level-badge level-expert">Эксперт</span><br>Команды: Red vs Blue · Shield: 100 (3 удара)</div>
+        <p>Захват и удержание базовых станций. Захваченная база приносит команде очки каждые 10 секунд (15–30 очков в зависимости от типа базы). Метки игроков дают всего 20 очков — основной упор на удержание баз.</p>
+      </div>
+    </div>
+
+    <a class="back-to-top" href="#top">↑ Наверх</a>
+  </section>
+
+  <section id="game-service">
+    <h2>6. Использование веб-портала игрового сервера (game service)</h2>
+    <p>Этот способ используйте только если пульт дистанционного управления недоступен.</p>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <p><strong>Запуск программного обеспечения.</strong> Убедитесь, что приложение игрового сервера Delta Strike запущено (запускается через соответствующую иконку), и проверьте, что оборудование подключилось.</p>
+        <div class="media-row">
+          <figure>
+            <img src="./game_manager_files/DS-GS-Logo-edited.png" alt="Иконка игрового сервера">
+            <figcaption>Иконка приложения игрового сервера</figcaption>
+          </figure>
+          <figure>
+            <img src="./game_manager_files/image-2-edited.png" alt="Окно приложения игрового сервера">
+            <figcaption>Приложение после запуска (видны подключённые устройства)</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <p><strong>Вход в систему игрового менеджера.</strong></p>
+        <ul>
+          <li>Откройте браузер Firefox и введите в адресную строку: <code>localhost</code>.</li>
+        </ul>
+        <p class="credentials">Логин: <strong>staff</strong> &nbsp;|&nbsp; Пароль: <strong>staff1</strong></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <p><strong>Подготовка фазеров.</strong></p>
+        <ul>
+          <li>Перейдите на экран оборудования — здесь видны все фазеры и можно ими управлять.</li>
+          <li>Чтобы перевести фазеры в спящий режим: отметьте их галочками (или выберите все), нажмите «Actions» → «Sleep». Во время игры фазеры в спящий режим перевести нельзя.</li>
+          <li>После перевода в спящий режим попросите клиентов надеть фазеры и нажать на курок — фазер перейдёт в предматчевый режим, группа готова к игре.</li>
+        </ul>
+        <div class="media-row">
+          <figure>
+            <img src="./game_manager_files/image-9-1024x386.png" alt="Подготовка фазеров">
+            <figcaption>Экран оборудования: фазеры в спящем режиме</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <p><strong>Выбор игры.</strong></p>
+        <ul>
+          <li>Перейдите на экран <strong>«Games»</strong>.</li>
+          <li>В разделе <strong>«Standby Groups»</strong> выберите созданную игровую группу.</li>
+          <li>Выберите нужный тип игры в разделе <strong>«Game Select»</strong> — командные цвета будут присвоены игрокам случайным образом.</li>
+        </ul>
+        <div class="media-row">
+          <figure>
+            <img src="./game_manager_files/Game-Select.png" alt="Выбор игры в менеджере">
+            <figcaption>Выбор игры в Менеджере игр</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <p><strong>Начало игры.</strong> Нажмите кнопку <strong>«Start Game»</strong> — группа перейдёт в раздел <strong>«Group Game»</strong>.</p>
+        <div class="media-row">
+          <figure>
+            <img src="./game_manager_files/image-10-1024x393.png" alt="Групповая игра">
+            <figcaption>Раздел «Групповая игра»</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <h3>Остановка игры</h3>
+    <ul>
+      <li>Чтобы остановить игру штатно: выберите игру и нажимайте кнопку <strong>«-5:00»</strong>, пока игровое время не дойдёт до 0:00.</li>
+      <li>Для быстрой остановки: нажмите <strong>«Stop All Games»</strong> или выберите конкретную игру и нажмите <strong>«Stop Game»</strong>.</li>
+    </ul>
+    <div class="media-row">
+      <figure>
+        <img src="./game_manager_files/stoppinggame.png" alt="Остановка игры">
+        <figcaption>Остановка игры в Менеджере игр</figcaption>
+      </figure>
+    </div>
+
+    <h3>Видео: запуск игры через игровой менеджер</h3>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/f-zCUYAaNWE" title="Уголок Delta Strike Ops: Менеджер игры - Начало игры" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <a class="back-to-top" href="#top">↑ Наверх</a>
+  </section>
+
+</main>
+
+</body>
+</html>
